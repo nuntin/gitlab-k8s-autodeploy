@@ -88,13 +88,12 @@ environments/prod/values.yaml
 
 ---
 
-## 📸 Demo Proof (Optional)
+## 📸 Demo Proof
 
-If you need visual proof, use:
+You can see the full flow here:
 
-```
-demo.gif
-```
+![Demo GIF](demo.gif)
+
 
 ---
 
