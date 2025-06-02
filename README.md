@@ -1,31 +1,74 @@
-
 # GitLab K8s Auto Deploy
 
-This project demonstrates how to use GitLab CI/CD to auto-deploy a simple application to a Kubernetes cluster using Helm.
+This project demonstrates how to deploy a basic static application to Kubernetes using Helm.  
+Originally designed for GitLab CI/CD automation, but can also be run **manually** if no runner is available.
+
+---
 
 ## 🔧 Stack
 
-- GitLab CI/CD
-- Helm
-- Minikube (or K3s)
-- NGINX static app
+- Helm  
+- Kubernetes (Minikube or K3s)  
+- NGINX Static HTML App
 
-## 🚀 How to Use
+---
 
-1. Clone this repo
-2. Start Minikube: `minikube start`
-3. Create HTML ConfigMap: `kubectl create configmap basic-html --from-file=app/index.html`
-4. Push to GitLab → CI/CD will auto-deploy
+## 🚀 How to Use (Manual)
 
-## 📂 Repo Layout
+You can test everything locally without GitLab Runner:
 
-- `.gitlab-ci.yml`: GitLab pipeline
-- `helm-chart/`: Helm chart definition
-- `k8s/`: Setup scripts
-- `app/`: HTML content
+### 1. Start Minikube
+```bash
+minikube start
+```
 
-## ✅ Result
+### 2. Create ConfigMap from HTML
+```bash
+kubectl create configmap basic-html --from-file=app/index.html
+```
 
-After pushing to GitLab, the CI pipeline will deploy your app and expose it via NodePort.
+### 3. Deploy via Helm
+```bash
+helm upgrade --install basic-app ./helm-chart/basic-app
+```
 
-> Clone. Push. Done.
+### 4. Access the App
+```bash
+minikube service basic-app
+```
+
+> You should see:  
+> **"Hello from GitLab CI + Helm + K8s"**
+
+---
+
+## 📸 Demo (Manual Deploy Flow)
+
+![demo](demo.gif)
+
+---
+
+## 📂 Repo Structure
+
+| Path               | Purpose                          |
+|--------------------|----------------------------------|
+| `.gitlab-ci.yml`   | Example CI/CD pipeline (optional)|
+| `helm-chart/`      | Helm chart for the app           |
+| `k8s/`             | Helper scripts (e.g. minikube)   |
+| `app/`             | Static HTML app content          |
+
+---
+
+## 💬 Note
+
+You can later hook this up to GitLab CI/CD by using `.gitlab-ci.yml` and running it on a Kubernetes-capable runner.
+
+> ✅ If you can run this manually — you can deploy it in CI.  
+> 🚫 No runner? No problem. Just prove it works.
+
+---
+
+## 🙏 Author
+
+[Nuntin (GitHub)](https://github.com/Nuntin)  
+Open to contract/freelance work — infrastructure setup, CI/CD pipelines, Kubernetes, and more.
