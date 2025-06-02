@@ -1,4 +1,4 @@
 apiVersion: v2
 name: basic-app
-description: A Helm chart for a simple HTML app
+description: A Helm chart for deploying a simple static app
 version: 0.1.0

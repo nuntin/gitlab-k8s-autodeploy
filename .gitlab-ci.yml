@@ -1,7 +1,35 @@
 stages:
+  - plan
+  - lint
   - deploy
+  - validate
+  - cleanup
+
+variables:
+  KUBECONFIG: "/root/.kube/config"
+
+plan:
+  stage: plan
+  script:
+    - echo "Simulate planning deployment"
+
+lint:
+  stage: lint
+  script:
+    - helm lint helm-chart/basic-app
 
 deploy:
   stage: deploy
   script:
-    - helm upgrade --install basic-app ./helm-chart/basic-app --kubeconfig ~/.kube/config
+    - helm upgrade --install basic-app helm-chart/basic-app --values environments/dev/values.yaml
+
+validate:
+  stage: validate
+  script:
+    - kubectl get svc
+
+cleanup:
+  stage: cleanup
+  when: manual
+  script:
+    - helm uninstall basic-app

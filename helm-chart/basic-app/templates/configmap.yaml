@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "basic-app.fullname" . }}
+data:
+  index.html: |
+    {{ .Values.config.html | indent 4 }}

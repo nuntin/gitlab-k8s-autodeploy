@@ -1,35 +1,40 @@
-# GitLab K8s Auto Deploy
+# GitLab K8s Auto Deploy (Refactored Edition)
 
-This project demonstrates how to deploy a basic static application to Kubernetes using Helm.  
-Originally designed for GitLab CI/CD automation, but can also be run **manually** if no runner is available.
+This is a **survival-ready infrastructure demo** — showing how to deploy an app to Kubernetes using Helm, without relying on paid services or GitLab Runner.
 
----
-
-## 🔧 Stack
-
-- Helm  
-- Kubernetes (Minikube or K3s)  
-- NGINX Static HTML App
+It’s designed for:
+- Freelancers who want to **prove they can deploy** even without budget
+- DevOps engineers building credibility via GitHub
+- Clients looking for real-world deploy logic, not just templates
 
 ---
 
-## 🚀 How to Use (Manual)
+## 🔧 Tech Stack
 
-You can test everything locally without GitLab Runner:
+- Kubernetes (Minikube, K3s, or any cluster)
+- Helm 3
+- GitLab CI/CD (optional, realistic pipeline included)
+- ConfigMap, Secrets, Environments separation (mocked)
+
+---
+
+## 🚀 Deployment (Manual Mode)
+
+No GitLab Runner? No problem. You can test the whole thing manually.
 
 ### 1. Start Minikube
 ```bash
 minikube start
 ```
 
-### 2. Create ConfigMap from HTML
+### 2. Create Static HTML ConfigMap
 ```bash
 kubectl create configmap basic-html --from-file=app/index.html
 ```
 
 ### 3. Deploy via Helm
 ```bash
-helm upgrade --install basic-app ./helm-chart/basic-app
+helm upgrade --install basic-app helm-chart/basic-app --values environments/dev/values.yaml
 ```
 
 ### 4. Access the App
@@ -37,38 +42,91 @@ helm upgrade --install basic-app ./helm-chart/basic-app
 minikube service basic-app
 ```
 
-> You should see:  
-> **"Hello from GitLab CI + Helm + K8s"**
+---
+
+## 🤖 GitLab CI/CD
+
+Included `.gitlab-ci.yml` with real stages:
+
+```yaml
+stages:
+  - plan
+  - lint
+  - deploy
+  - validate
+  - cleanup
+```
+
+> This pipeline simulates a full flow: Helm lint, deploy, validation, and optional cleanup.
+
+You can run this CI later with a GitLab Kubernetes runner.
 
 ---
 
-## 📸 Demo (Manual Deploy Flow)
+## 🔐 Secret Handling (Mock)
 
-![demo](demo.gif)
+You’ll find a sample:
 
----
+```yaml
+secrets/mock-secrets.yaml
+```
 
-## 📂 Repo Structure
-
-| Path               | Purpose                          |
-|--------------------|----------------------------------|
-| `.gitlab-ci.yml`   | Example CI/CD pipeline (optional)|
-| `helm-chart/`      | Helm chart for the app           |
-| `k8s/`             | Helper scripts (e.g. minikube)   |
-| `app/`             | Static HTML app content          |
+This shows awareness of:
+- Secret separation from chart
+- Security practices even in simple pipelines
 
 ---
 
-## 💬 Note
+## 🧭 Environment-Specific Values
 
-You can later hook this up to GitLab CI/CD by using `.gitlab-ci.yml` and running it on a Kubernetes-capable runner.
+Supports Dev & Prod overrides:
 
-> ✅ If you can run this manually — you can deploy it in CI.  
-> 🚫 No runner? No problem. Just prove it works.
+```
+environments/dev/values.yaml
+environments/prod/values.yaml
+```
+
+---
+
+## 📸 Demo Proof (Optional)
+
+If you need visual proof, use:
+
+```
+demo.gif
+```
+
+---
+
+## 📂 Project Structure
+
+| Path                    | Description                         |
+|-------------------------|-------------------------------------|
+| `app/`                  | Static HTML content                 |
+| `helm-chart/`           | Helm chart with templates           |
+| `environments/`         | Per-environment Helm values         |
+| `secrets/`              | Mock secrets (optional use)         |
+| `.gitlab-ci.yml`        | Multi-stage pipeline (manual-ready) |
+| `demo.gif`              | Optional visual confirmation        |
+
+---
+
+## 💡 Why This Exists
+
+Because not every DevOps engineer has:
+- Access to paid runners
+- Real client jobs to showcase
+
+This project proves you can build + deploy K8s apps **from scratch**.
+
+> It’s not about perfect infra.  
+> It’s about proving you can work, ship, and survive.
 
 ---
 
 ## 🙏 Author
 
 [Nuntin (GitHub)](https://github.com/Nuntin)  
-Open to contract/freelance work — infrastructure setup, CI/CD pipelines, Kubernetes, and more.
+DevOps / Infra Engineer • 12+ years experience  
+Open to **remote / freelance work** — even at survival rates.
+

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: basic-app
+  name: {{ include "basic-app.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: basic-app
+      app: {{ include "basic-app.name" . }}
   template:
     metadata:
       labels:
-        app: basic-app
+        app: {{ include "basic-app.name" . }}
     spec:
       containers:
-        - name: nginx
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        - name: web
+          image: nginx
           ports:
             - containerPort: 80
           volumeMounts:
@@ -23,4 +23,4 @@ spec:
       volumes:
         - name: html
           configMap:
-            name: basic-html
+            name: {{ include "basic-app.fullname" . }}
