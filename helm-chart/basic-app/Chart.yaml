@@ -1,0 +1,4 @@
+apiVersion: v2
+name: basic-app
+description: A Helm chart for a simple HTML app
+version: 0.1.0

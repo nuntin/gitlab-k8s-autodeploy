@@ -1,0 +1,7 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - helm upgrade --install basic-app ./helm-chart/basic-app --kubeconfig ~/.kube/config
