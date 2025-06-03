@@ -1,99 +1,34 @@
-# GitLab K8s Auto Deploy (Refactored Edition)
+# GitLab CI Auto Deploy to Kubernetes (Helm + Minikube Example)
 
-This is a **survival-ready infrastructure demo** — showing how to deploy an app to Kubernetes using Helm, without relying on paid services or GitLab Runner.
-
-It’s designed for:
-- Freelancers who want to **prove they can deploy** even without budget
-- DevOps engineers building credibility via GitHub
-- Clients looking for real-world deploy logic, not just templates
+> Real-world DevOps Portfolio Lab – Deploy static app to K8s using Helm, GitLab CI, and Minikube. No runners needed.
 
 ---
 
-## 🔧 Tech Stack
+## 🚀 What This Project Does
 
-- Kubernetes (Minikube, K3s, or any cluster)
-- Helm 3
-- GitLab CI/CD (optional, realistic pipeline included)
-- ConfigMap, Secrets, Environments separation (mocked)
+This is a fully working **GitLab CI/CD + Kubernetes deployment lab** using:
 
----
+- 🧱 GitLab CI to automate deployment steps
+- 🐳 Minikube to simulate a Kubernetes cluster
+- 🪖 Helm chart to manage app deployment
+- 🔐 Secrets, env-specific overrides, and demo GIF
 
-## 🚀 Deployment (Manual Mode)
-
-No GitLab Runner? No problem. You can test the whole thing manually.
-
-### 1. Start Minikube
-```bash
-minikube start
-```
-
-### 2. Create Static HTML ConfigMap
-```bash
-kubectl create configmap basic-html --from-file=app/index.html
-```
-
-### 3. Deploy via Helm
-```bash
-helm upgrade --install basic-app helm-chart/basic-app --values environments/dev/values.yaml
-```
-
-### 4. Access the App
-```bash
-minikube service basic-app
-```
+> You can test everything **locally**, even with **no GitLab Runner**.
 
 ---
 
-## 🤖 GitLab CI/CD
+## 👀 Who This Is For
 
-Included `.gitlab-ci.yml` with real stages:
-
-```yaml
-stages:
-  - plan
-  - lint
-  - deploy
-  - validate
-  - cleanup
-```
-
-> This pipeline simulates a full flow: Helm lint, deploy, validation, and optional cleanup.
-
-You can run this CI later with a GitLab Kubernetes runner.
+✅ DevOps engineers building their portfolio  
+✅ Job seekers without access to real infrastructure  
+✅ Anyone learning GitLab CI + K8s + Helm from scratch  
+✅ Students, bootcampers, freelancers, and survival-mode builders
 
 ---
 
-## 🔐 Secret Handling (Mock)
+## 📸 Demo Proof (Optional)
 
-You’ll find a sample:
-
-```yaml
-secrets/mock-secrets.yaml
-```
-
-This shows awareness of:
-- Secret separation from chart
-- Security practices even in simple pipelines
-
----
-
-## 🧭 Environment-Specific Values
-
-Supports Dev & Prod overrides:
-
-```
-environments/dev/values.yaml
-environments/prod/values.yaml
-```
-
----
-
-## 📸 Demo Proof
-
-You can see the full flow here:
-
-![Demo GIF](demo.gif)
-
+🖼️ [View Demo](./demo.gif) – CI → Helm → K8s Deploy in action
 
 ---
 
@@ -118,14 +53,27 @@ Because not every DevOps engineer has:
 
 This project proves you can build + deploy K8s apps **from scratch**.
 
-> It’s not about perfect infra.  
-> It’s about proving you can work, ship, and survive.
+> It’s not about perfect infra.
+> It’s about real infrastructure skill.
 
 ---
 
-## 🙏 Author
+## 🔍 SEO Keywords
 
-[Nuntin (GitHub)](https://github.com/Nuntin)  
-DevOps / Infra Engineer • 12+ years experience  
-Open to **remote / freelance work** — even at survival rates.
+`gitlab ci kubernetes deployment`, `helm minikube example`, `k8s auto deploy`, `devops project real`, `iac setup`, `gitlab ci helm`
 
+---
+
+## 🛠️ How to Use (Manual)
+
+See [README Manual Steps](./README.manual.md) if you don’t have a GitLab Runner.
+
+---
+
+## 📬 Feedback Welcome
+
+If this helped or you want to suggest improvements, feel free to open an issue or fork.
+
+⭐ Star this repo if you found it useful.
+
+---
