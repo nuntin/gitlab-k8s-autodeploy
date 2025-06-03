@@ -82,3 +82,19 @@ If this helped or you want to suggest improvements, feel free to open an issue o
 ⭐ Star this repo if you found it useful.
 
 ---
+
+## 👤 About Me – DevOps Engineer (Open to Work)
+Hi, I'm Nuntin – a DevOps / Infrastructure Engineer from Thailand 🇹🇭
+Currently looking for new opportunities in the field of DevOps and Cloud Infrastructure.
+
+- Terraform, Ansible, GitLab CI/CD, Docker, Kubernetes
+- AWS: EC2, S3, IAM, RDS, VPC, CloudFront, Route53
+- Real use-case demo → see this repo!
+
+📦 GitHub: [github.com/Nuntin](https://github.com/Nuntin)
+
+💼 LinkedIn: [linkedin.com/in/nuntin-padmadin-97b708145](https://www.linkedin.com/in/nuntin-padmadin-97b708145/)
+
+📧 Email: nuntin.p@gmail.com
+
+---
