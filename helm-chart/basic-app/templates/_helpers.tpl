@@ -1,7 +1,11 @@
 {{- define "basic-app.name" -}}
-basic-app
+{{ .Chart.Name }}
 {{- end }}
 
 {{- define "basic-app.fullname" -}}
-{{ .Release.Name }}-{{ include "basic-app.name" . }}
+{{ include "basic-app.name" . }}-{{ .Release.Name }}
+{{- end }}
+
+{{- define "basic-app.chart" -}}
+{{ .Chart.Name }}-{{ .Chart.Version }}
 {{- end }}
