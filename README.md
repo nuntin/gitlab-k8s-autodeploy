@@ -4,7 +4,12 @@
 
 ---
 
-## 🚀 What This Project Does
+# 🚀 GitLab K8s Auto Deploy
+
+![GitLab CI](https://img.shields.io/badge/GitLab%20CI-pipeline--manual-blueviolet?logo=gitlab)
+![Helm Ready](https://img.shields.io/badge/Helm-chart--ready-0A6EBD?logo=helm)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-deployable-326CE5?logo=kubernetes)
+![Open to Work](https://img.shields.io/badge/Open--to--Work-Yes-brightgreen?style=flat-square)
 
 This is a fully working **GitLab CI/CD + Kubernetes deployment lab** using:
 
