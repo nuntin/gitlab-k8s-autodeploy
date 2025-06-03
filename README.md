@@ -28,7 +28,7 @@ This is a fully working **GitLab CI/CD + Kubernetes deployment lab** using:
 
 ## 📸 Demo Proof (Optional)
 
-🖼️ [View Demo](https://github.com/nuntin/gitlab-k8s-autodeploy/raw/main/demo.gif) – CI → Helm → K8s Deploy in action
+🖼️ ![CI → Helm → K8s Demo](https://github.com/nuntin/gitlab-k8s-autodeploy/raw/main/demo.gif)
 
 ---
 
